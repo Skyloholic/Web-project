@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Video Downloader - Download Videos Online Free | YouTube, Instagram, TikTok</title>
+  <meta name="description" content="Download videos from YouTube, Instagram, TikTok, Pinterest, and more. Fast, secure, and free. No registration required." />
+  <meta name="keywords" content="video downloader, download videos, YouTube downloader, Instagram downloader, TikTok downloader" />
+  <meta name="author" content="VideoSave" />
+  <meta property="og:title" content="Video Downloader - Download Videos Free" />
+  <meta property="og:description" content="Fast and secure video downloader for all platforms" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-left">
+        <a href="#" class="logo" onclick="location.href='index.html'; return false;">
+          <i class="fas fa-download"></i> VideoSave
+        </a>
+      </div>
+      <nav class="nav">
+        <a href="#features" data-i18n="features">Features</a>
+        <a href="#how-to" data-i18n="howToUse">How to Use</a>
+        <a href="#faq" data-i18n="faq">FAQ</a>
+      </nav>
+      <div class="header-right">
+        <div class="language-selector">
+          <select id="language" onchange="changeLanguage(this.value)">
+            <option value="en">🌐 English</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="pt">🇵🇹 Português</option>
+            <option value="hi">🇮🇳 हिन्दी</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="zh">🇨🇳 中文</option>
+          </select>
+        </div>
+        <button class="hamburger-btn" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu hidden">
+      <a href="https://www.youtube.com/shorts" target="_blank" class="menu-item">
+        <i class="fab fa-youtube"></i> YouTube Shorts
+      </a>
+      <a href="#" class="menu-item" onclick="alert('Chrome Extension coming soon!'); return false;">
+        <i class="fab fa-chrome"></i> Chrome Extension
+      </a>
+      <a href="#" class="menu-item" onclick="alert('My Website coming soon!'); return false;">
+        <i class="fas fa-globe"></i> My Website
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Download Videos Online <span class="highlight">Free</span></h1>
+        <p>Fast, easy, and secure video downloader. Download from YouTube, TikTok, and more in MP4, MP3, and more formats.</p>
+
+        <!-- Download Box -->
+        <div class="download-box">
+          <div class="input-wrapper">
+            <i class="fas fa-link"></i>
+            <input type="text" id="videoUrl" placeholder="Paste your video link here..." />
+            <button class="btn-analyze" onclick="analyze()">
+              <i class="fas fa-search"></i> Analyze
+            </button>
+          </div>
+        </div>
+
+        <!-- Loader -->
+        <div id="loader" class="loader hidden">
+          <div class="spinner"></div>
+          <p>Processing your video...</p>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="results hidden">
+          <div class="results-header">
+            <h3><i class="fas fa-film"></i> Available Downloads</h3>
+            <button class="btn-new" onclick="document.getElementById('videoUrl').focus()">
+              <i class="fas fa-plus"></i> New Download
+            </button>
+          </div>
+          <div id="formats-list" class="formats-list"></div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <svg class="hero-illustration" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- Video player background -->
+          <rect x="40" y="60" width="220" height="160" rx="16" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+          
+          <!-- Play button -->
+          <circle cx="150" cy="140" r="45" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+          <polygon points="135,125 135,155 170,140" fill="rgba(255,255,255,0.8)"/>
+          
+          <!-- Download arrow -->
+          <g class="download-animation">
+            <line x1="150" y1="220" x2="150" y2="260" stroke="rgba(255,255,255,0.7)" stroke-width="3" stroke-linecap="round"/>
+            <polygon points="150,260 140,245 160,245" fill="rgba(255,255,255,0.7)"/>
+          </g>
+          
+          <!-- Decorative circles -->
+          <circle cx="70" cy="80" r="8" fill="rgba(255,255,255,0.2)"/>
+          <circle cx="250" cy="70" r="6" fill="rgba(255,255,255,0.15)"/>
+          <circle cx="260" cy="220" r="5" fill="rgba(255,255,255,0.1)"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platforms Section -->
+  <section class="platforms">
+    <div class="container">
+      <div class="section-header">
+        <h2 data-i18n="downloadFromMultiple">Download from Multiple Platforms</h2>
+        <p class="section-subtitle" data-i18n="selectFavorite">Select your favorite platform to start downloading</p>
+      </div>
+      <div class="platforms-grid">
+        <a href="index.html" class="platform-card youtube">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <path d="M62 17s-.5-3.5-2-5c-2-2.5-4-2.5-5-2.5C49.5 9 32 9 32 9s-17.5 0-23 0.5c-1 0-3 0-5 2.5c-1.5 1.5-2 5-2 5s-.5 4-.5 8v3.75c0 3.75 0.5 7.5 0.5 7.5s0.5 3.5 2 5c2 2.5 4.5 2.5 5.5 2.5c4 .5 22.5.5 22.5.5s17.5 0 23-.5c1 0 3 0 5-2.5c1.5-1.5 2-5 2-5s0.5-3.75 0.5-7.5v-3.75c-.5-4-.5-8-.5-8zM26 44V20l18 12z"/>
+          </svg>
+          <div>
+            <h3>YouTube</h3>
+            <p>Download videos & audio</p>
+          </div>
+        </a>
+
+        <a href="instagram.html" class="platform-card instagram">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="8" y="12" width="48" height="40" rx="6"/>
+            <circle cx="32" cy="32" r="10"/>
+            <circle cx="50" cy="14" r="2"/>
+          </svg>
+          <div>
+            <h3>Instagram</h3>
+            <p>Download reels & posts</p>
+          </div>
+        </a>
+
+        <a href="pinterest.html" class="platform-card pinterest">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <path d="M32 8c-13.25 0-24 10.75-24 24 0 9.96 6.08 18.56 14.72 22.08-.08-1.68-.08-4.32.56-6.32l4.16-17.6c0 0-.96-2-2.24-2-1.28 0-1.92 1.36-1.92 3.04 0 2.88 1.68 5.76 2.4 8.96.56 2.56.32 5.76-1.28 7.84-1.6 2.08-4.32 2.88-6.72 2.88-5.28 0-8.64-3.84-8.64-9.44 0-5.6 4.16-10.4 9.92-10.4 3.36 0 5.44 1.6 6.56 3.04l2.24-.88c.64-.24 1.92-.88 2.16-1.04.24-.16.48-.4.48-.56 0-.24-.4-.88-.64-1.12-1.92-2.08-5.12-4-9.36-4-7.68 0-13.76 6.4-13.76 14.24 0 7.36 5.28 13.44 12.48 13.44 4.32 0 7.52-1.68 9.44-4.16.64-1.04 1.28-2.4 1.92-4.48.56-1.76.88-3.52 1.04-5.28.16-1.92-.32-4-1.28-5.52-.96-1.52-2.56-2.56-4.64-2.56-2.4 0-4.16 1.36-4.96 3.36l-.96 2.4"/>
+          </svg>
+          <div>
+            <h3>Pinterest</h3>
+            <p>Download pins & videos</p>
+          </div>
+        </a>
+
+        <a href="x.html" class="platform-card x">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <path d="M48 6H56L36 28L58 58H40L26 40L10 58H2L24 34L4 6H22L34 22L48 6ZM42 52H46L20 10H15L42 52Z"/>
+          </svg>
+          <div>
+            <h3>X (Twitter)</h3>
+            <p>Download tweets & videos</p>
+          </div>
+        </a>
+
+        <a href="youtube-shorts.html" class="platform-card youtube-shorts">
+          <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+            <path d="M32 8C18.7 8 8 18.7 8 32C8 45.3 18.7 56 32 56C45.3 56 56 45.3 56 32C56 18.7 45.3 8 32 8ZM28 42V22L44 32L28 42Z"/>
+            <rect x="24" y="16" width="16" height="32" rx="3" fill="none" stroke="currentColor" stroke-width="2"/>
+          </svg>
+          <div>
+            <h3>YouTube Shorts</h3>
+            <p>Download short videos</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2 data-i18n="whatCanDownload">What You Can Download</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg  width="200" height="200">
+              <rect x="8" y="12" width="48" height="40" rx="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M20 28L28 36L36 20L44 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="44" cy="18" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3 data-i18n="fullVideos">Full Videos</h3>
+          <p data-i18n="downloadVideosMultiple">Download videos in multiple resolutions from 144p up to 4K quality.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg  width="200" height="200">
+              <path d="M32 8C18.7 8 8 18.7 8 32C8 45.3 18.7 56 32 56C45.3 56 56 45.3 56 32C56 18.7 45.3 8 32 8ZM28 44V20L44 32L28 44Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3 data-i18n="audioOnly">Audio Only</h3>
+          <p data-i18n="convertVideo">Convert any video into high-quality MP3 audio files for music and podcasts.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"  width="200" height="200">
+              <rect x="12" y="20" width="40" height="32" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M20 20V12C20 10.9 20.9 10 22 10H42C43.1 10 44 10.9 44 12V20" stroke="currentColor" stroke-width="2"/>
+              <circle cx="32" cy="36" r="4" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3 data-i18n="mobileFriendly">Mobile Friendly</h3>
+          <p data-i18n="worksSeamlessly">Works seamlessly on desktop, tablet, and mobile devices.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg  width="200" height="200">
+              <path d="M32 8C18.7 8 8 18.7 8 32C8 45.3 18.7 56 32 56C45.3 56 56 45.3 56 32C56 18.7 45.3 8 32 8ZM42 28L28 42L20 34" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3 data-i18n="safe">100% Safe</h3>
+          <p data-i18n="noRegistration">No registration required. Your files are secure and private.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg width="200" height="200">
+              <path d="M32 8L38 24H56L42 34L48 50L32 40L16 50L22 34L8 24H26L32 8Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3 data-i18n="lightningFast">Lightning Fast</h3>
+          <p data-i18n="downloadInstantly">Download videos instantly without waiting or annoying ads.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg  width="200" height="200 ">
+              <circle cx="32" cy="32" r="24" stroke="currentColor" stroke-width="2"/>
+              <path d="M32 12V32M32 32L46 46" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Multi-Platform</h3>
+          <p>Works with YouTube, TikTok, Instagram, and other popular sites.</p>
+        </div>
+      </div>
+    </section>
+
+  <!-- How To Use Section -->
+  <section id="how-to" class="how-to">
+    <div class="container">
+      <h2>How to Use</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Paste Link</h3>
+          <p>Copy the video URL from your browser and paste it into the input field above.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Click Analyze</h3>
+          <p>Click the "Analyze" button to scan the video and show all available formats.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Choose Quality</h3>
+          <p>Select your preferred quality and format (MP4, MP3, etc.) from the list.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-number">4</div>
+          <h3>Download</h3>
+          <p>Click the Download button and your file starts downloading instantly to your device.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Is VideoSave free to use?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Yes! VideoSave is completely free. No hidden fees, no registration required, no ads.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Can I download audio only?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Absolutely! Select any audio format during download to extract just the audio as MP3.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Is there a download limit?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            No limits! Download as many videos as you want, whenever you want.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Is it safe and private?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Yes, 100% safe and private. We don't store any data about your downloads.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 VideoSave. All rights reserved. Download videos online free.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

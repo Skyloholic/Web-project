@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube Shorts Downloader - Download Shorts Free</title>
+  <meta name="description" content="Download YouTube Shorts in high quality for free. Fast, secure, and no registration needed." />
+  <meta name="keywords" content="YouTube Shorts downloader, download shorts, short video downloader" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-left">
+        <a href="index.html" class="logo">
+          <i class="fas fa-download"></i> VideoSave
+        </a>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+      <div class="header-right">
+        <div class="language-selector">
+          <select id="language" onchange="changeLanguage(this.value)">
+            <option value="en">🌐 English</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="fr">🇫🇷 Français</option>
+          </select>
+        </div>
+        <button class="hamburger-btn" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu hidden">
+      <a href="https://www.youtube.com/shorts" target="_blank" class="menu-item">
+        <i class="fab fa-youtube"></i> YouTube Shorts
+      </a>
+      <a href="#" class="menu-item" onclick="alert('Chrome Extension coming soon!'); return false;">
+        <i class="fab fa-chrome"></i> Chrome Extension
+      </a>
+      <a href="#" class="menu-item" onclick="alert('My Website coming soon!'); return false;">
+        <i class="fas fa-globe"></i> My Website
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero youtube-hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>YouTube Shorts Downloader<span class="highlight"></span></h1>
+        <p>Download YouTube Shorts in high quality for free. Save your favorite short videos instantly.</p>
+
+        <!-- Download Box -->
+        <div class="download-box">
+          <div class="input-wrapper">
+            <i class="fas fa-link"></i>
+            <input type="text" id="videoUrl" placeholder="Paste your YouTube Shorts URL here..." />
+            <button class="btn-analyze" onclick="analyze()">
+              <i class="fas fa-download"></i> Download
+            </button>
+          </div>
+        </div>
+
+        <!-- Loader -->
+        <div id="loader" class="loader hidden">
+          <div class="spinner"></div>
+          <p>Processing your YouTube Short...</p>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="results hidden">
+          <div class="results-header">
+            <h3><i class="fas fa-film"></i> Available Downloads</h3>
+            <button class="btn-new" onclick="document.getElementById('videoUrl').focus()">
+              <i class="fas fa-plus"></i> New Download
+            </button>
+          </div>
+          <div id="formats-list" class="formats-list"></div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <svg class="hero-illustration" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- Mobile phone frame -->
+          <rect x="60" y="40" width="180" height="260" rx="16" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+          
+          <!-- Video content -->
+          <rect x="75" y="60" width="150" height="220" rx="12" fill="rgba(255,255,255,0.1)"/>
+          
+          <!-- Play button -->
+          <circle cx="150" cy="170" r="35" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+          <polygon points="135,155 135,185 170,170" fill="rgba(255,255,255,0.8)"/>
+          
+          <!-- Notch -->
+          <rect x="120" y="50" width="60" height="12" rx="6" fill="rgba(255,255,255,0.15)"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2>Download YouTube Shorts</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="12" width="48" height="40" rx="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M20 28L28 36L36 20L44 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="44" cy="18" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>HD Quality</h3>
+          <p>Download shorts in the best available quality.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 8C18.7 8 8 18.7 8 32C8 45.3 18.7 56 32 56C45.3 56 56 45.3 56 32C56 18.7 45.3 8 32 8ZM28 44V20L44 32L28 44Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Instant Download</h3>
+          <p>No waiting, get your shorts immediately.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 8C18.7 8 8 18.7 8 32C8 45.3 18.7 56 32 56C45.3 56 56 45.3 56 32C56 18.7 45.3 8 32 8ZM42 28L28 42L20 34" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>100% Safe</h3>
+          <p>No registration, completely secure.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 8L38 24H56L42 34L48 50L32 40L16 50L22 34L8 24H26L32 8Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Lightning Fast</h3>
+          <p>Quick processing with zero ads.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="32" cy="32" r="20" stroke="currentColor" stroke-width="2"/>
+              <path d="M32 16V32L42 42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Mobile Friendly</h3>
+          <p>Works on desktop, tablet, and phone.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="12" y="20" width="40" height="32" rx="2" stroke="currentColor" stroke-width="2"/>
+              <path d="M20 20V12C20 10.9 20.9 10 22 10H42C43.1 10 44 10.9 44 12V20" stroke="currentColor" stroke-width="2"/>
+              <circle cx="32" cy="36" r="4" stroke="currentColor" stroke-width="2"/>
+            </svg>
+          </div>
+          <h3>Easy to Use</h3>
+          <p>Simple interface, no technical knowledge needed.</p>
+        </div>
+      </div>
+    </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <h2>FAQ - YouTube Shorts Downloader</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>How do I download a YouTube Short?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Copy the YouTube Shorts link and paste it into our downloader. Select quality and click Download!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>What quality options are available?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            We provide the best available quality from 360p up to 1080p depending on the source.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Is it legal to download YouTube Shorts?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Download only content you have rights to. Respect copyright and terms of service.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Can I download multiple shorts at once?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Currently, you can download one short at a time. Batch downloads coming soon!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Do you store my downloads?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            No, we don't store any files. Everything is deleted after download.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 VideoSave. Download YouTube Shorts online free.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

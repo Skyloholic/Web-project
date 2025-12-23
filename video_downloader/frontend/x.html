@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8\" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>X (Twitter) Video Downloader - Download Tweets & Videos Free</title>
+  <meta name="description" content="Download X (Twitter) videos and media in high quality for free. Quick and secure downloads." />
+  <meta name="keywords" content="X downloader, Twitter video downloader, download tweets" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-left">
+        <a href="index.html" class="logo">
+          <i class="fas fa-download"></i> VideoSave
+        </a>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+      <div class="header-right">
+        <div class="language-selector">
+          <select id="language" onchange="changeLanguage(this.value)">
+            <option value="en">🌐 English</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="fr">🇫🇷 Français</option>
+          </select>
+        </div>
+        <button class="hamburger-btn" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu hidden">
+      <a href="https://www.youtube.com/shorts" target="_blank" class="menu-item">
+        <i class="fab fa-youtube"></i> YouTube Shorts
+      </a>
+      <a href="#" class="menu-item" onclick="alert('Chrome Extension coming soon!'); return false;">
+        <i class="fab fa-chrome"></i> Chrome Extension
+      </a>
+      <a href="#" class="menu-item" onclick="alert('My Website coming soon!'); return false;">
+        <i class="fas fa-globe"></i> My Website
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero x-hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>X (Twitter) Downloader<span class="highlight"></span></h1>
+        <p>Download tweets, videos, and GIFs from X (Twitter) in high quality. No sign-up required.</p>
+
+        <!-- Download Box -->
+        <div class="download-box">
+          <div class="input-wrapper">
+            <i class="fas fa-link"></i>
+            <input type="text" id="videoUrl" placeholder="Paste your X (Twitter) URL here..." />
+            <button class="btn-analyze" onclick="analyze()">
+              <i class="fas fa-download"></i> Download
+            </button>
+          </div>
+        </div>
+
+        <!-- Loader -->
+        <div id="loader" class="loader hidden">
+          <div class="spinner"></div>
+          <p>Processing your X content...</p>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="results hidden">
+          <div class="results-header">
+            <h3><i class="fas fa-film"></i> Available Downloads</h3>
+            <button class="btn-new" onclick="document.getElementById('videoUrl').focus()">
+              <i class="fas fa-plus"></i> New Download
+            </button>
+          </div>
+          <div id="formats-list" class="formats-list"></div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <svg class="hero-illustration" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- Tweet card -->
+          <rect x="30" y="60" width="240" height="200" rx="12" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+          
+          <!-- Avatar circle -->
+          <circle cx="50" cy="85" r="12" fill="rgba(255,255,255,0.2)"/>
+          
+          <!-- Username -->
+          <rect x="70" y="80" width="60" height="8" rx="2" fill="rgba(255,255,255,0.1)"/>
+          <rect x="70" y="92" width="40" height="6" rx="1" fill="rgba(255,255,255,0.08)"/>
+          
+          <!-- Tweet text -->
+          <rect x="50" y="115" width="180" height="8" rx="2" fill="rgba(255,255,255,0.1)"/>
+          <rect x="50" y="128" width="180" height="8" rx="2" fill="rgba(255,255,255,0.1)"/>
+          <rect x="50" y="141" width="120" height="8" rx="2" fill="rgba(255,255,255,0.1)"/>
+          
+          <!-- Action icons -->
+          <g class="tweet-animation">
+            <circle cx="70" cy="170" r="6" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <circle cx="120" cy="170" r="6" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <circle cx="170" cy="170" r="6" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+            <circle cx="220" cy="170" r="6" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2>Download X Content</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 8C18.7 8 8 18.7 8 32C8 45.3 18.7 56 32 56C45.3 56 56 45.3 56 32C56 18.7 45.3 8 32 8ZM28 44V20L44 32L28 44Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Tweet Videos</h3>
+          <p>Download videos from tweets in HD.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="12" width="48" height="40" rx="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M20 28L28 36L36 20L44 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="44" cy="18" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>GIF Download</h3>
+          <p>Save animated GIFs from tweets.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 8C18.7 8 8 18.7 8 32C8 45.3 18.7 56 32 56C45.3 56 56 45.3 56 32C56 18.7 45.3 8 32 8ZM42 28L28 42L20 34" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>100% Anonymous</h3>
+          <p>Download without any tracking.</p>
+        </div>
+      </div>
+    </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <h2>FAQ - X (Twitter) Downloader</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>How do I download from X (Twitter)?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Copy the tweet link and paste it into our downloader. Click "Analyze" and select your preferred format to download.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Can I download protected tweets?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            We can only download publicly available tweets. Protected tweets cannot be accessed.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>What video formats are supported?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            We support MP4 videos and animated GIFs. Videos are available in multiple quality options.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 VideoSave. Download X (Twitter) videos online free.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

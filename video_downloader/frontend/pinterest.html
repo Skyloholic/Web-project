@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pinterest Video Downloader - Download Pins & Videos Free</title>
+  <meta name="description" content="Download Pinterest pins and videos in high quality for free. Save your favorite content instantly." />
+  <meta name="keywords" content="Pinterest downloader, download pins, Pinterest video downloader" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <div class="header-left">
+        <a href="index.html" class="logo">
+          <i class="fas fa-download"></i> VideoSave
+        </a>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#faq">FAQ</a>
+      </nav>
+      <div class="header-right">
+        <div class="language-selector">
+          <select id="language" onchange="changeLanguage(this.value)">
+            <option value="en">🌐 English</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="fr">🇫🇷 Français</option>
+          </select>
+        </div>
+        <button class="hamburger-btn" onclick="toggleMenu()">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu hidden">
+      <a href="https://www.youtube.com/shorts" target="_blank" class="menu-item">
+        <i class="fab fa-youtube"></i> YouTube Shorts
+      </a>
+      <a href="#" class="menu-item" onclick="alert('Chrome Extension coming soon!'); return false;">
+        <i class="fab fa-chrome"></i> Chrome Extension
+      </a>
+      <a href="#" class="menu-item" onclick="alert('My Website coming soon!'); return false;">
+        <i class="fas fa-globe"></i> My Website
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero pinterest-hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1>Pinterest Downloader<span class="highlight"></span></h1>
+        <p>Download Pinterest pins and videos in high quality for free. Save your favorite content instantly.</p>
+
+        <!-- Download Box -->
+        <div class="download-box">
+          <div class="input-wrapper">
+            <i class="fas fa-link"></i>
+            <input type="text" id="videoUrl" placeholder="Paste your Pinterest URL here..." />
+            <button class="btn-analyze" onclick="analyze()">
+              <i class="fas fa-download"></i> Download
+            </button>
+          </div>
+        </div>
+
+        <!-- Loader -->
+        <div id="loader" class="loader hidden">
+          <div class="spinner"></div>
+          <p>Processing your Pinterest content...</p>
+        </div>
+
+        <!-- Results -->
+        <div id="results" class="results hidden">
+          <div class="results-header">
+            <h3><i class="fas fa-film"></i> Available Downloads</h3>
+            <button class="btn-new" onclick="document.getElementById('videoUrl').focus()">
+              <i class="fas fa-plus"></i> New Download
+            </button>
+          </div>
+          <div id="formats-list" class="formats-list"></div>
+        </div>
+      </div>
+
+      <div class="hero-image">
+        <svg class="hero-illustration" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+          <!-- Pinterest pin -->
+          <rect x="50" y="40" width="200" height="260" rx="16" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+          
+          <!-- Image area -->
+          <rect x="70" y="60" width="160" height="140" rx="8" fill="rgba(255,255,255,0.1)"/>
+          
+          <!-- Text area -->
+          <rect x="70" y="210" width="160" height="15" rx="3" fill="rgba(255,255,255,0.1)"/>
+          <rect x="70" y="235" width="140" height="10" rx="2" fill="rgba(255,255,255,0.08)"/>
+          
+          <!-- Save button -->
+          <rect x="85" y="260" width="130" height="25" rx="12" fill="rgba(255,255,255,0.2)" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/>
+          <text x="150" y="277" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-size="12" font-weight="bold">Save</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features">
+    <div class="container">
+      <h2>Download Pinterest Content</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8" y="12" width="48" height="40" rx="4" stroke="currentColor" stroke-width="2"/>
+              <path d="M20 28L28 36L36 20L44 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="44" cy="18" r="2" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Pin Images</h3>
+          <p>Download high-resolution pin images.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 8C18.7 8 8 18.7 8 32C8 45.3 18.7 56 32 56C45.3 56 56 45.3 56 32C56 18.7 45.3 8 32 8ZM28 44V20L44 32L28 44Z" fill="currentColor"/>
+            </svg>
+          </div>
+          <h3>Video Pins</h3>
+          <p>Save video pins with audio.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M32 8C18.7 8 8 18.7 8 32C8 45.3 18.7 56 32 56C45.3 56 56 45.3 56 32C56 18.7 45.3 8 32 8ZM42 28L28 42L20 34" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Fast & Secure</h3>
+          <p>Quick downloads with no data collection.</p>
+        </div>
+      </div>
+    </section>
+
+  <!-- FAQ Section -->
+  <section id="faq" class="faq">
+    <div class="container">
+      <h2>FAQ - Pinterest Downloader</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>How do I download a Pinterest pin?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Copy the pin URL and paste it into our downloader. Select quality and format, then download!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>Can I download entire boards?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            Currently, our downloader supports individual pins. Support for multiple pins is coming soon!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" onclick="toggleFaq(this)">
+            <span>What are the quality options?</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="faq-answer">
+            We provide options from standard quality up to the original pin resolution.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 VideoSave. Download Pinterest pins and videos online free.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
